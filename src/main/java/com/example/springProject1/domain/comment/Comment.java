@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
@@ -28,6 +29,10 @@ public class Comment {
     @Column(name = "created_date")
     @LastModifiedDate
     private String modifiedDate;
+
+    @Column(name = "created_date")
+    @CreatedDate
+    private String createdDate;
 
     @ManyToOne
     @JoinColumn(name = "posts_id")
