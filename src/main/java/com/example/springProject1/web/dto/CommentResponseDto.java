@@ -1,5 +1,6 @@
 package com.example.springProject1.web.dto;
 
+import com.example.springProject1.domain.comment.Comment;
 import com.example.springProject1.domain.posts.Posts;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,15 +16,15 @@ public class CommentResponseDto {
     private String comment;
     private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private String nickname;
-    private Posts posts;
+    private String name;
+    private Long postsId;
 
     public CommentResponseDto(Comment comment) {
         this.id = comment.getId();
         this.comment = comment.getComment();
         this.createdDate = comment.getCreatedDate();
         this.modifiedDate = comment.getModifiedDate();
-        this.nickname = comment.getUser().getNickname();
+        this.name = comment.getUser().getName();
         this.postsId = comment.getPosts().getId();
     }
 }

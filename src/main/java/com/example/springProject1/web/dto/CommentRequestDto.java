@@ -1,5 +1,6 @@
 package com.example.springProject1.web.dto;
 
+import com.example.springProject1.domain.comment.Comment;
 import com.example.springProject1.domain.posts.Posts;
 import com.example.springProject1.domain.user.User;
 import lombok.Getter;
