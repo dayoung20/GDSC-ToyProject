@@ -3,14 +3,16 @@ package com.example.springProject1.web.dto;
 import com.example.springProject1.domain.comment.Comment;
 import com.example.springProject1.domain.posts.Posts;
 import com.example.springProject1.domain.user.User;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Data
+@AllArgsConstructor
 @Getter
 @NoArgsConstructor
+@Builder
 public class CommentRequestDto {
 
     private Long id;
