@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,10 +37,12 @@ public class Posts extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @NotFound(action = NotFoundAction.IGNORE)
     private User user;
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("id asc")//댓글 정렬
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<Comment> comments;
     //
 

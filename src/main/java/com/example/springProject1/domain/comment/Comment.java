@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -15,7 +18,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Table(name = "comments")
 @Entity
 public class Comment {
 
@@ -26,7 +28,7 @@ public class Comment {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String comment; //댓글 내용
 
-    @Column(name = "created_date")
+    @Column(name = "modified_date")
     @LastModifiedDate
     private String modifiedDate;
 
@@ -36,10 +38,12 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "posts_id")
+    @NotFound(action = NotFoundAction.IGNORE)
     private Posts posts;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @NotFound(action = NotFoundAction.IGNORE)
     private User user;
 
     //git

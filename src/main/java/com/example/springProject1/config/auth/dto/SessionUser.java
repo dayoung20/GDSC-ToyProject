@@ -4,7 +4,7 @@ import com.example.springProject1.domain.user.User;
 import lombok.Getter;
 import org.h2.engine.Session;
 
-import java.io.Serial;
+
 import java.io.Serializable;
 
 @Getter
