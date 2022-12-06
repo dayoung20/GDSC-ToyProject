@@ -87,13 +87,13 @@ var main = {
         } else {
             $.ajax({
                 type: 'POST',
-                url: '/api/posts/' + data.postsId + '/comments',
-                dataType: 'JSON',
+                url: '/api/v1/posts/detail/' + data.postsId + '/comments',
+                dataType: 'text',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
             }).done(function () {
                 alert('댓글이 등록되었습니다.');
-                window.location.reload();
+                window.location.href = '/';
             }).fail(function (error) {
                 alert(JSON.stringify(error));
             });

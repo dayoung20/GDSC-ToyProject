@@ -27,16 +27,19 @@
             <th>제목</th>
             <th>작성자</th>
             <th>최종수정일</th>
+            <th>게시글 수정</th>
+            <th>게시글 보기</th>
         </tr>
         </thead>
         <tbody id="tbody">
         {{#posts}}
             <tr>
                 <td>{{id}}</td>
-                <td><a href="/posts/update/{{id}}">{{title}}</a></td>
+                <td>{{title}}</td>
                 <td>{{author}}</td>
                 <td>{{modifiedDate}}</td>
-                <td><a href="/posts/{{id}}">댓글</a></td>
+                <td><a href="/posts/update/{{id}}">게시글 수정</a></td>
+                <td><a href="/posts/detail/{{id}}">게시글 보기</a></td>
             </tr>
         {{/posts}}
         </tbody>

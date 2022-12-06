@@ -35,10 +35,12 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "integer default 0")
     private int view;
 
+    /*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @NotFound(action = NotFoundAction.IGNORE)
     private User user;
+    */
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("id asc")//댓글 정렬
@@ -51,6 +53,7 @@ public class Posts extends BaseTimeEntity {
         this.title = title;
         this.content = content;
         this.author = author;
+        //this.user = user;
     }
     public void update(String title, String content){ //게시글 수정 메소드
         this.title =  title;

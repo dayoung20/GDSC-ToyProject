@@ -37,14 +37,17 @@ public class Comment {
     private String createdDate;
 
     @ManyToOne
-    @JoinColumn(name = "posts_id")
+    @JoinColumn(name = "post_id")
     @NotFound(action = NotFoundAction.IGNORE)
     private Posts posts;
 
+    /*
     @ManyToOne
     @JoinColumn(name = "user_id")
     @NotFound(action = NotFoundAction.IGNORE)
     private User user;
+
+     */
 
     //git
 }
