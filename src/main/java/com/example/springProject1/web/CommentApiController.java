@@ -17,10 +17,9 @@ public class CommentApiController {
 
     private final CommentService commentService;
 
-    @PostMapping("/api/v1/posts/{id}/comments")
-    public ResponseEntity commentSave(@PathVariable Long id, @RequestBody CommentRequestDto dto,
-                                      @LoginUser SessionUser sessionUser) {
-        return ResponseEntity.ok(commentService.commentSave(sessionUser.getName(), id, dto));
+    @PostMapping("/api/v1/posts/detail/{id}/comments")
+    public ResponseEntity commentSave(@PathVariable Long id, @RequestBody CommentRequestDto dto/*@LoginUser SessionUser sessionUser*/) {
+        return ResponseEntity.ok(commentService.commentSave(/*sessionUser.getName(), */id, dto));
     }
 
 }
