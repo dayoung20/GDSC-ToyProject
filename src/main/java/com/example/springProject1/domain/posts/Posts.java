@@ -35,18 +35,12 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "integer default 0")
     private int view;
 
-    /*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private User user;
-    */
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("id asc")//댓글 정렬
     @NotFound(action = NotFoundAction.IGNORE)
     private List<Comment> comments;
-    //
+
 
     @Builder
     public Posts(String title, String content, String author){

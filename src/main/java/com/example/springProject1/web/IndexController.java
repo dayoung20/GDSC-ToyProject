@@ -49,51 +49,16 @@ public class IndexController {
         List<CommentResponseDto> comments = dto.getComments();
 
         // 댓글 관련
-
         if (comments != null && !comments.isEmpty()) {
             model.addAttribute("comments", comments);
         }
 
-
-
-        /*
-        // 사용자 관련
-        if (user != null) {
-            model.addAttribute("user", user.getName());
-
-            //게시글 작성자 본인인지 확인
-            if (dto.getUserId().equals(user.getId())) {
-                model.addAttribute("writer", true);
-            }
-
-        }
-
-         */
-        //postsService.updateView(id); // views ++
         model.addAttribute("posts", dto);
         return "posts-read";
     }
 
 
-/*
-    @GetMapping("/posts/detail/{id}")
-    public String postDetail(@PathVariable Long id, Model model){
-        PostsResponseDto dto = postsService.findById(id);
-        model.addAttribute("post", dto);
-        return "posts-detail";
-    }
-
- */
 
 
 
-    /*
-    @GetMapping("/posts/detail/{id}/comments")
-    public String postComment(@PathVariable Long id, Model model){
-        PostsResponseDto dto = postsService.findById(id);
-        model.addAttribute("post", dto);
-        return "posts-detail";
-    }
-
-     */
 }

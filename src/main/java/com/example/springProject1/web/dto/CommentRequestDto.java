@@ -19,7 +19,6 @@ public class CommentRequestDto {
     private String comment;
     private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    //private User user;
     private Posts posts;
 
     public Comment toEntity() {
@@ -28,7 +27,6 @@ public class CommentRequestDto {
                 .comment(comment)
                 .createdDate(createdDate)
                 .modifiedDate(modifiedDate)
-                //.user(user)
                 .posts(posts)
                 .build();
 
