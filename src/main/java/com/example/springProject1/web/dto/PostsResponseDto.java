@@ -18,12 +18,15 @@ public class PostsResponseDto {
     private String author;
     private List<CommentResponseDto> comments;
 
+    private String filePath;
+
     public PostsResponseDto(Posts entity){
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();
         this.author = entity.getAuthor();
         this.comments = entity.getComments().stream().map(CommentResponseDto::new).collect(Collectors.toList());
+        this.filePath = entity.getFilePath();
     }
 
 }
