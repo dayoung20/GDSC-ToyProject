@@ -1,6 +1,8 @@
 package com.example.springProject1.service.posts;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import com.example.springProject1.domain.posts.Posts;
@@ -12,6 +14,7 @@ import com.example.springProject1.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
 @Service
@@ -26,7 +29,17 @@ public class PostsService {
     }
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
+    public Long save(PostsSaveRequestDto requestDto, MultipartFile file) throws Exception {
+
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+        UUID uuid = UUID.randomUUID();
+        String new_fileName = uuid + "_" + file.getOriginalFilename();
+        File new_file = new File(projectPath, new_fileName);
+        file.transferTo(new_file); //예외처리 필수
+
+        requestDto.setFileName(new_fileName);
+        requestDto.setFilePath("/files/" + new_fileName);
+
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 

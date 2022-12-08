@@ -31,6 +31,7 @@ public class Posts extends BaseTimeEntity {
 
     private String author;
 
+    //댓글
     //추가
     @Column(columnDefinition = "integer default 0")
     private int view;
@@ -42,12 +43,25 @@ public class Posts extends BaseTimeEntity {
     private List<Comment> comments;
 
 
+    //첨부파일-이미지
+    //추가
+    @Column
+    private String fileName; //이미지명
+
+    @Column
+    private String filePath; //이미지 저장 경로
+
+
+
+
     @Builder
-    public Posts(String title, String content, String author){
+    public Posts(String title, String content, String author, String fileName, String filePath){
         this.title = title;
         this.content = content;
         this.author = author;
         //this.user = user;
+        this.filePath = filePath;
+        this.fileName = fileName;
     }
     public void update(String title, String content){ //게시글 수정 메소드
         this.title =  title;

@@ -9,6 +9,7 @@ import com.example.springProject1.domain.user.UserRepository;
 import com.example.springProject1.web.dto.CommentRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -17,6 +18,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PostsRepository postsRepository;
 
+    @Transactional
     public Long commentSave(Long id, CommentRequestDto dto) {
 
         Posts posts = postsRepository.findById(id).orElseThrow(() ->
